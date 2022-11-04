@@ -49,6 +49,7 @@ class SpringcloudEs02ApplicationTests {
 
         DeleteIndexRequest deleteRequest = new DeleteIndexRequest();
         deleteRequest.indices("animes");
+        //目测现在的话删除的话用的只能是这个indices了的说^_^
         rhlc.indices().delete(deleteRequest,RequestOptions.DEFAULT);
 
     }
