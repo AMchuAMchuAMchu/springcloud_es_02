@@ -40,7 +40,7 @@ class SpringcloudEs02ApplicationTests {
 
         animeInfos.forEach((item)->{
             IndexRequest indexRequest = new IndexRequest();
-            indexRequest.index("aniems").id(item.getId().toString()).source(JSON.toJSONString(item),XContentType.JSON);
+            indexRequest.index("animes").id(item.getId().toString()).source(JSON.toJSONString(item),XContentType.JSON);
             bulkRequest.add(indexRequest);
         });
 
