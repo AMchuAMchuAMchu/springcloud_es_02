@@ -33,11 +33,15 @@ class SpringcloudEs02ApplicationTests {
 
 
 
+
+
     @Test
     void testDeleteIndex() throws IOException {
 
         DeleteRequest deleteRequest = new DeleteRequest();
-        deleteRequest.index("animes");
+        deleteRequest.index("animes").id();
+        //暂时不知道如何删除索引的说....
+
         rhlc.delete(deleteRequest,RequestOptions.DEFAULT);
 
     }
