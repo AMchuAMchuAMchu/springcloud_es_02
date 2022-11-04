@@ -29,7 +29,7 @@ class SpringcloudEs02ApplicationTests {
         System.out.println();
         System.out.println();
         System.out.println();
-        documentFields.forEach(System.out::println);
+        documentFields.getSource().entrySet().forEach(System.out::println);
 
     }
 
