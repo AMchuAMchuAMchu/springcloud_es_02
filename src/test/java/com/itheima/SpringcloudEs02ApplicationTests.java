@@ -5,6 +5,7 @@ import com.itheima.pojo.AnimeInfo;
 import org.elasticsearch.action.get.GetRequest;
 import org.elasticsearch.action.get.GetResponse;
 import org.elasticsearch.action.index.IndexRequest;
+import org.elasticsearch.action.search.SearchRequest;
 import org.elasticsearch.client.RequestOptions;
 import org.elasticsearch.client.RestHighLevelClient;
 import org.elasticsearch.common.xcontent.XContentType;
@@ -29,7 +30,7 @@ class SpringcloudEs02ApplicationTests {
         System.out.println();
         System.out.println();
         System.out.println();
-        documentFields.forEach(System.out::println);
+        documentFields.getFields().entrySet().forEach(System.out::println);
 
     }
 
