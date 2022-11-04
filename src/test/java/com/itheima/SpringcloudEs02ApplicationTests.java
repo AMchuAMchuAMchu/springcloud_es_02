@@ -2,6 +2,8 @@ package com.itheima;
 
 import com.alibaba.fastjson2.JSON;
 import com.itheima.pojo.AnimeInfo;
+import org.elasticsearch.action.get.GetRequest;
+import org.elasticsearch.action.get.GetResponse;
 import org.elasticsearch.action.index.IndexRequest;
 import org.elasticsearch.client.RequestOptions;
 import org.elasticsearch.client.RestHighLevelClient;
@@ -19,7 +21,20 @@ class SpringcloudEs02ApplicationTests {
     private RestHighLevelClient rhlc;
 
     @Test
-    void contextLoads() throws IOException {
+    void testGetDoc() throws IOException {
+
+        GetRequest getRequest = new GetRequest();
+        getRequest.index("anime").id("1");
+        GetResponse documentFields = rhlc.get(getRequest, RequestOptions.DEFAULT);
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        documentFields.forEach(System.out::println);
+
+    }
+
+    @Test
+    void testCreateIndexAndDoc() throws IOException {
 
         IndexRequest indexRequest = new IndexRequest();
         AnimeInfo animeInfo = new AnimeInfo();
