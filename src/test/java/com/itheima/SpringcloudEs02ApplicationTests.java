@@ -5,6 +5,7 @@ import com.itheima.dao.AnimeInfoDao;
 import com.itheima.pojo.Anime;
 import com.itheima.pojo.AnimeInfo;
 import org.elasticsearch.action.bulk.BulkRequest;
+import org.elasticsearch.action.delete.DeleteRequest;
 import org.elasticsearch.action.get.GetRequest;
 import org.elasticsearch.action.get.GetResponse;
 import org.elasticsearch.action.index.IndexRequest;
@@ -29,6 +30,17 @@ class SpringcloudEs02ApplicationTests {
 
     @Autowired
     private AnimeInfoDao animeInfoDao;
+
+
+
+    @Test
+    void testDeleteIndex() throws IOException {
+
+        DeleteRequest deleteRequest = new DeleteRequest();
+        deleteRequest.index("animes");
+        rhlc.delete(deleteRequest,RequestOptions.DEFAULT);
+
+    }
 
 
     @Test
