@@ -4,6 +4,7 @@ import com.alibaba.fastjson2.JSON;
 import com.itheima.dao.AnimeInfoDao;
 import com.itheima.pojo.Anime;
 import com.itheima.pojo.AnimeInfo;
+import org.elasticsearch.action.admin.indices.delete.DeleteIndexRequest;
 import org.elasticsearch.action.bulk.BulkRequest;
 import org.elasticsearch.action.delete.DeleteRequest;
 import org.elasticsearch.action.get.GetRequest;
@@ -40,11 +41,15 @@ class SpringcloudEs02ApplicationTests {
     @Test
     void testDeleteIndex() throws IOException {
 
-        DeleteRequest deleteRequest = new DeleteRequest();
-        //暂时不知道如何删除索引的说....
-        deleteRequest.index("animes").id("null");
+//        DeleteRequest deleteRequest = new DeleteRequest();
+//        //暂时不知道如何删除索引的说....
+//        deleteRequest.index("animes").id("null");
+//
+//        rhlc.delete(deleteRequest,RequestOptions.DEFAULT);
 
-        rhlc.delete(deleteRequest,RequestOptions.DEFAULT);
+        DeleteIndexRequest deleteRequest = new DeleteIndexRequest();
+        deleteRequest.indices("animes");
+        rhlc.indices().delete(deleteRequest,RequestOptions.DEFAULT);
 
     }
 
