@@ -24,12 +24,12 @@ class SpringcloudEs02ApplicationTests {
     void testGetDoc() throws IOException {
 
         GetRequest getRequest = new GetRequest();
-        getRequest.index("anime").id("1");
+        getRequest.index("animes").id("1");
         GetResponse documentFields = rhlc.get(getRequest, RequestOptions.DEFAULT);
         System.out.println();
         System.out.println();
         System.out.println();
-        documentFields.getSource().entrySet().forEach(System.out::println);
+        documentFields.forEach(System.out::println);
 
     }
 
