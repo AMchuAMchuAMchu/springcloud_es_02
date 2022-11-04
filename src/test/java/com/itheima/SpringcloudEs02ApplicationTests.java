@@ -37,7 +37,7 @@ class SpringcloudEs02ApplicationTests {
     void testDeleteIndex() throws IOException {
 
         DeleteRequest deleteRequest = new DeleteRequest();
-        deleteRequest.index("animes").id("zePqzpcIQ_2NLq7W6C6Iow");
+        deleteRequest.index("animes");
         rhlc.delete(deleteRequest,RequestOptions.DEFAULT);
 
     }
