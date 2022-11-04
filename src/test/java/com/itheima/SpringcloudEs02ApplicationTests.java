@@ -9,6 +9,7 @@ import org.elasticsearch.action.search.SearchRequest;
 import org.elasticsearch.client.RequestOptions;
 import org.elasticsearch.client.RestHighLevelClient;
 import org.elasticsearch.common.xcontent.XContentType;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -30,7 +31,7 @@ class SpringcloudEs02ApplicationTests {
         System.out.println();
         System.out.println();
         System.out.println();
-        documentFields.getFields().entrySet().forEach(System.out::println);
+        System.out.println(documentFields);
 
     }
 
@@ -45,6 +46,12 @@ class SpringcloudEs02ApplicationTests {
         rhlc.index(indexRequest, RequestOptions.DEFAULT);
 
 
+    }
+
+
+    @AfterEach
+    void close() throws IOException {
+        rhlc.close();
     }
 
 }
