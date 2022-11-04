@@ -32,7 +32,7 @@ class SpringcloudEs02ApplicationTests {
         System.out.println();
         System.out.println();
 //        System.out.println(documentFields);
-        System.out.println(documentFields.getField("_source"));
+        System.out.println(documentFields.getSourceAsString());
 
     }
 
