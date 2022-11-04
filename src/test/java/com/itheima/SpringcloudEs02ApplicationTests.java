@@ -6,6 +6,7 @@ import org.elasticsearch.action.get.GetRequest;
 import org.elasticsearch.action.get.GetResponse;
 import org.elasticsearch.action.index.IndexRequest;
 import org.elasticsearch.action.search.SearchRequest;
+import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.client.RequestOptions;
 import org.elasticsearch.client.RestHighLevelClient;
 import org.elasticsearch.common.xcontent.XContentType;
@@ -21,6 +22,20 @@ class SpringcloudEs02ApplicationTests {
 
     @Autowired
     private RestHighLevelClient rhlc;
+
+    @Test
+    void testSearch() throws IOException {
+
+        SearchRequest searchRequest = new SearchRequest();
+        searchRequest.indices("animes");
+        SearchResponse search = rhlc.search(searchRequest, RequestOptions.DEFAULT);
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        search.getHits().forEach(System.out::println);
+
+
+    }
 
     @Test
     void testGetDoc() throws IOException {
