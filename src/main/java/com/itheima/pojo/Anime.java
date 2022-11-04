@@ -4,23 +4,17 @@ import lombok.Data;
 
 /**
  * Description ==> TODO
- * BelongsProject ==> springboot_second
+ * BelongsProject ==> springcloud_es_02
  * BelongsPackage ==> com.itheima.pojo
  * Version ==> 1.0
- * CreateTime ==> 2022-10-25 08:47:12
+ * CreateTime ==> 2022-11-04 15:09:42
  * Author ==> _02雪乃赤瞳楪祈校条祭_艾米丽可锦木千束木更七草荠_制作委员会_start
  */
 @Data
-public class AnimeInfo {
+public class Anime{
 
     private String name;
 
-    private Integer releaseTime;
-
-    private String character01;
-
-    private String character02;
-
-    private Integer id;
+    private Integer time;
 
 }

@@ -1,7 +1,10 @@
 package com.itheima;
 
 import com.alibaba.fastjson2.JSON;
+import com.itheima.dao.AnimeInfoDao;
+import com.itheima.pojo.Anime;
 import com.itheima.pojo.AnimeInfo;
+import org.elasticsearch.action.bulk.BulkRequest;
 import org.elasticsearch.action.get.GetRequest;
 import org.elasticsearch.action.get.GetResponse;
 import org.elasticsearch.action.index.IndexRequest;
@@ -16,12 +19,34 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.io.IOException;
+import java.util.List;
 
 @SpringBootTest
 class SpringcloudEs02ApplicationTests {
 
     @Autowired
     private RestHighLevelClient rhlc;
+
+    @Autowired
+    private AnimeInfoDao animeInfoDao;
+
+
+    @Test
+    void testBulkInsert() throws IOException {
+
+        BulkRequest bulkRequest = new BulkRequest();
+
+        List<AnimeInfo> animeInfos = animeInfoDao.selectList(null);
+
+        animeInfos.forEach((item)->{
+            IndexRequest indexRequest = new IndexRequest();
+            indexRequest.index("aniems").id(item.getId().toString()).source(JSON.toJSONString(item),XContentType.JSON);
+            bulkRequest.add(indexRequest);
+        });
+
+        rhlc.bulk(bulkRequest,RequestOptions.DEFAULT);
+
+    }
 
     @Test
     void testSearch() throws IOException {
@@ -55,7 +80,7 @@ class SpringcloudEs02ApplicationTests {
     void testCreateIndexAndDoc() throws IOException {
 
         IndexRequest indexRequest = new IndexRequest();
-        AnimeInfo animeInfo = new AnimeInfo();
+        Anime animeInfo = new Anime();
         animeInfo.setName("刀剑神域");
         animeInfo.setTime(2022);
         indexRequest.index("animes").id("1").source(JSON.toJSONString(animeInfo), XContentType.JSON);

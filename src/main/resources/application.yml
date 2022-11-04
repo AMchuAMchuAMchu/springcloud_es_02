@@ -3,3 +3,8 @@ server:
 spring:
   elasticsearch:
     uris: http://localhost:9200
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/anime_test01
+    username: root
+    password: root
